@@ -1,15 +1,21 @@
 package com.iot.webapi.login.logic.impl
 
 import com.iot.webapi.login.logic.LoginLogic
+import java.security.MessageDigest
 
 class LoginLogicImpl: LoginLogic{
     override fun login(pass: String): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-        val hash: String = sha256(pass)
-//        val ldi = LoginLogic
+        return sha256(pass) == ""
     }
 
     override fun sha256(pass: String): String {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val bytes: ByteArray = pass.toByteArray()
+        val md: MessageDigest = MessageDigest.getInstance("SHA-256")
+        val digest = md.digest(bytes)
+        var result: String = String()
+        for (byte in digest){
+            result += "%02x".format(byte)
+        }
+        return result
     }
 }

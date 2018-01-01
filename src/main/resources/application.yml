@@ -1,0 +1,18 @@
+#spring.datasource.url=jdbc:mysql://localhost:8080/user_m
+#spring.datasource.username=koba0719
+#spring.datasource.password=masamune719
+#spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring:
+  datasource:
+    url:  jdbc:mysql://localhost:3306/user_m
+    username: koba0719
+    password: masamune719
+    driverClassName: com.mysql.jdbc.Driver
+# JPA
+jpa:
+  hibernate:
+  ddl-auto: update
+  show-sql: true
+# Thymeleaf
+thymeleaf:
+  cache: false

@@ -10,14 +10,12 @@ import org.springframework.stereotype.Service
  * DBからのデータ取得と加工を行う.
  */
 @Service
-open class DataAccessService @Autowired constructor(private val accessRepository: AccessRepository){
+open class DataAccessService @Autowired constructor(private val accessRepository: AccessRepository) {
 
     /**
      * 全ユーザリストの取得
-     * @return ??
+     * @return MutableList<DataAccess>
      */
 
     fun findAllUser(): MutableList<DataAccess> = accessRepository.findAll()
-
-
 }

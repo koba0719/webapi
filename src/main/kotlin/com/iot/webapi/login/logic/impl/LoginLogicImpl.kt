@@ -5,6 +5,7 @@ import java.security.MessageDigest
 
 class LoginLogicImpl: LoginLogic{
     override fun login(pass: String): Boolean {
+
         return sha256(pass) == ""
     }
 

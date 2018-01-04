@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.servlet.ModelAndView
+import javax.servlet.http.HttpServletResponse
 
 @RestController
 class AccessController @Autowired constructor(private val dataAccessService: DataAccessService){
 
     /**
+     * ※テスト
      * loginCheckへのリダイレクト
      */
     @RequestMapping("/")
@@ -22,14 +24,14 @@ class AccessController @Autowired constructor(private val dataAccessService: Dat
     /**
      * パラメータpassをハッシュ化して正誤の比較
      */
-    @RequestMapping("/access", method = RequestMethod.GET)
-    fun loginCheck(@RequestParam pass: String){
+    @RequestMapping("/access", method = arrayOf(RequestMethod.GET))
+    fun loginCheck(@RequestParam pass: String, response: HttpServletResponse){
         val loginLogicImpl = LoginLogicImpl()
-        loginLogicImpl.sha256(pass)
-        println(pass)
+        response.writer.write(loginLogicImpl.sha256(pass))
     }
 
     /**
+     * ※テスト
      * テーブル内容の全件取得
      */
     @RequestMapping("/entity")
@@ -37,6 +39,7 @@ class AccessController @Autowired constructor(private val dataAccessService: Dat
 
 
     /**
+     * ※テスト
      * ResponseEntityの動作確認
      * @return json形式のEntity
      */

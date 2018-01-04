@@ -18,4 +18,8 @@ open class DataAccessService @Autowired constructor(private val accessRepository
      */
 
     fun findAllUser(): MutableList<DataAccess> = accessRepository.findAll()
+    fun findById(user_id: String): String{
+
+        return ""
+    }
 }

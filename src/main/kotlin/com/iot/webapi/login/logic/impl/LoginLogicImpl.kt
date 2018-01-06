@@ -1,12 +1,19 @@
 package com.iot.webapi.login.logic.impl
 
 import com.iot.webapi.login.logic.LoginLogic
+import com.iot.webapi.login.model.DataAccess
 import java.security.MessageDigest
 
 class LoginLogicImpl: LoginLogic{
-    override fun login(pass: String): Boolean {
-
-        return sha256(pass) == ""
+    override fun login(user_id: String, userList: MutableList<DataAccess>): Boolean {
+        for (user in userList){
+            if (user.user_id == user_id){
+                return true
+            }else{
+                return false
+            }
+        }
+        return false
     }
 
     override fun sha256(pass: String): String {

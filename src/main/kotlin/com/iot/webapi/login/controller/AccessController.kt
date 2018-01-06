@@ -25,9 +25,14 @@ class AccessController @Autowired constructor(private val dataAccessService: Dat
      * パラメータpassをハッシュ化して正誤の比較
      */
     @RequestMapping("/access", method = arrayOf(RequestMethod.GET))
-    fun loginCheck(@RequestParam pass: String, response: HttpServletResponse){
+    fun loginCheck(@RequestParam pass: String, @RequestParam user_id: String, response: HttpServletResponse){
         val loginLogicImpl = LoginLogicImpl()
-        response.writer.write(loginLogicImpl.sha256(pass))
+        val userList: MutableList<DataAccess> = dataAccessService.findAllUser()
+        if (loginLogicImpl.login(user_id,userList)) {
+            response.writer.write(loginLogicImpl.sha256(pass))
+        }else{
+            response.writer.write("false")
+        }
     }
 
     /**

@@ -29,7 +29,9 @@ class AccessController @Autowired constructor(private val dataAccessService: Dat
         val loginLogicImpl = LoginLogicImpl()
         val userList: MutableList<DataAccess> = dataAccessService.findAllUser()
         if (loginLogicImpl.login(user_id,userList)) {
-            response.writer.write(loginLogicImpl.sha256(pass))
+            val sha_pass: String = loginLogicImpl.sha256(pass)
+            val authenticity: Boolean = loginLogicImpl.login(sha_pass, userList)
+            response.writer.write(authenticity.toString())
         }else{
             response.writer.write("false")
         }

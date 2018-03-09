@@ -16,3 +16,4 @@ jpa:
 # Thymeleaf
 thymeleaf:
   cache: false
+

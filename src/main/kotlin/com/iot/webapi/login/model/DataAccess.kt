@@ -12,7 +12,7 @@ import javax.persistence.*
 @Entity
 @Table(name = "m_user_tbl")
 data class DataAccess(
-        @Id @GeneratedValue var user_seq: Int? = 0,
+        @Id @GeneratedValue var user_seq: Int = 0,
         @Column(nullable = false) var user_id: String = "",
         @Column(nullable = false) var sha_pass: String = "") {
 }

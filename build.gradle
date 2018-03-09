@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		kotlinVersion = '1.2.10'
+		kotlinVersion = '1.2.21'
 		springBootVersion = '1.5.9.RELEASE'
 	}
 	repositories {
@@ -10,12 +10,12 @@ buildscript {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
 		classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+		classpath("org.jetbrains.kotlin:kotlin-noarg:${kotlinVersion}")
 	}
 }
 apply plugin: 'java'
 apply plugin: 'kotlin'
 apply plugin: 'kotlin-spring'
-apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
 group = 'com.IoT'
@@ -41,12 +41,14 @@ dependencies {
 //	compile('org.springframework.cloud:spring-cloud-starter-aws')
 //	compile('org.springframework.cloud:spring-cloud-starter-aws-jdbc')
 //	compile('org.springframework.boot:spring-boot-starter-security')
+//	compile('org.springframework.security.oauth:spring-security-oauth2')
 	compile('org.springframework.boot:spring-boot-starter')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile ("org.springframework.boot:spring-boot-starter-data-jpa")
-	compile("org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}")
+	compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
 	compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
+    compile ('com.fasterxml.jackson.module:jackson-module-kotlin')
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.security:spring-security-test')

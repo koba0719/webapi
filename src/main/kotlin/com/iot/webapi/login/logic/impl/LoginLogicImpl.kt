@@ -5,10 +5,20 @@ import com.iot.webapi.login.model.DataAccess
 import java.security.MessageDigest
 
 class LoginLogicImpl: LoginLogic{
-    override fun login(searchString: String, userList: MutableList<DataAccess>): Boolean {
-        for (search in userList){
-            if (search.user_id == searchString) {
-                return true
+    override fun login(searchString: String, passOrId: Int,userList: MutableList<DataAccess>): Boolean {
+
+        if (passOrId == 0) {
+            for (search in userList) {
+                if (search.user_id == searchString) {
+                    return true
+                }
+            }
+
+        } else if (passOrId == 1) {
+            for (search in userList) {
+                if (search.sha_pass == searchString) {
+                    return true
+                }
             }
         }
         return false
